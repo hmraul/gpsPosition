@@ -1,4 +1,4 @@
-package com.otheleio;
+package com.rhm;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
