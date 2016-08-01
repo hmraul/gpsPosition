@@ -3,6 +3,7 @@ package com.rhm.infrastructure.services;
 import com.rhm.core.entities.GeoCoordinate;
 import com.rhm.core.services.GeoCoordinateService;
 
+//@Service
 public class GeoService implements GeoCoordinateService {
   @Override
   public double calculateDistance(GeoCoordinate source, GeoCoordinate destination) {
