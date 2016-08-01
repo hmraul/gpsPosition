@@ -1,8 +1,8 @@
 package com.rhm.core.services;
 
-import com.rhm.core.entities.Geocoordinateee;
+import com.rhm.core.entities.GeoCoordinate;
 
 public interface GeoCoordinateService {
 
-  double calculateDistance(Geocoordinateee source, Geocoordinateee destination);
+  double calculateDistance(GeoCoordinate source, GeoCoordinate destination);
 }

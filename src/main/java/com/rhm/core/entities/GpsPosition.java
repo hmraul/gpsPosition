@@ -2,8 +2,8 @@ package com.rhm.core.entities;
 
 public class GpsPosition {
 
-  public Geocoordinateee getGeocoordinateee() {
-    return geocoordinateee;
+  public GeoCoordinate getGeoCoordinate() {
+    return geoCoordinate;
   }
   public String getUserId() {
     return userId;
@@ -12,13 +12,13 @@ public class GpsPosition {
     return id;
   }
 
-  private Geocoordinateee geocoordinateee;
+  private GeoCoordinate geoCoordinate;
   private String userId;
   private long id;
 
-  public GpsPosition(long id, Geocoordinateee geocoordinateee, String userId) {
+  public GpsPosition(long id, GeoCoordinate geoCoordinate, String userId) {
     this.id = id;
-    this.geocoordinateee = geocoordinateee;
+    this.geoCoordinate = geoCoordinate;
     this.userId = userId;
   }
 }

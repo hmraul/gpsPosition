@@ -1,6 +1,6 @@
 package com.rhm.core.entities;
 
-public class Geocoordinateee {
+public class GeoCoordinate {
   public double getLatitude() {
     return latitude;
   }
@@ -12,7 +12,7 @@ public class Geocoordinateee {
   private double latitude;
   private double longitude;
 
-  public Geocoordinateee(double latitude, double longitude) {
+  public GeoCoordinate(double latitude, double longitude) {
     this.latitude = latitude;
     this.longitude = longitude;
   }

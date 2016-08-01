@@ -1,11 +1,11 @@
 package com.rhm.infrastructure.services;
 
-import com.rhm.core.entities.Geocoordinateee;
+import com.rhm.core.entities.GeoCoordinate;
 import com.rhm.core.services.GeoCoordinateService;
 
 public class GeoService implements GeoCoordinateService {
   @Override
-  public double calculateDistance(Geocoordinateee source, Geocoordinateee destination) {
+  public double calculateDistance(GeoCoordinate source, GeoCoordinate destination) {
     long R = 6378137; // Earth’s mean radius in meter
     double latitudeDistance = toRadiant(destination.getLatitude() - source.getLatitude());
     double longitudeDistance = toRadiant(destination.getLongitude() - source.getLongitude());
