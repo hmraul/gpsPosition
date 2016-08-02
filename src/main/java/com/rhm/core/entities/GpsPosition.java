@@ -22,6 +22,7 @@ public class GpsPosition {
   private Date timestamp;
 
   public GpsPosition(long id, GeoCoordinate geoCoordinate, String userId) {
+
     this.id = id;
     this.geoCoordinate = geoCoordinate;
     this.userId = userId;
