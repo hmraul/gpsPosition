@@ -1,10 +1,16 @@
 package com.rhm.infrastructure.services;
 
 import com.rhm.core.entities.GeoCoordinate;
+import com.rhm.core.repositories.GeoCoordinateRepository;
 import com.rhm.core.services.GeoCoordinateService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 //@Service
 public class GeoService implements GeoCoordinateService {
+
+  @Autowired
+  private GeoCoordinateRepository geoCoordinateRepository;
+
   @Override
   public double calculateDistance(GeoCoordinate source, GeoCoordinate destination) {
     long R = 6378137; // Earth’s mean radius in meter
