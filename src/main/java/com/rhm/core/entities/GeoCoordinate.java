@@ -9,10 +9,16 @@ public class GeoCoordinate {
     return longitude;
   }
 
+  private long id;
   private double latitude;
   private double longitude;
 
+  public GeoCoordinate() {
+    //used by spring.data
+  }
+
   public GeoCoordinate(double latitude, double longitude) {
+    super();
     this.latitude = latitude;
     this.longitude = longitude;
   }
