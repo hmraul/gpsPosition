@@ -5,6 +5,7 @@ import com.rhm.core.entities.GeoCoordinate;
 import com.rhm.core.entities.GpsPosition;
 import com.rhm.core.repositories.GpsPositionRepository;
 import com.rhm.core.services.GeoCoordinateService;
+import com.rhm.core.services.GpsPositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -18,40 +19,29 @@ import java.util.List;
 @RequestMapping(value = "/positions")
 public class Positions {
 
-  @Autowired
-  private GpsPositionRepository gpsPositionRepository;
-
-//  private AtomicLong lastId = new AtomicLong();
-//  List<GpsPosition> positions = new ArrayList<GpsPosition>() {{
-//    add(new GpsPosition(0.0, 0.0, "rhm"));
-//    add(new GpsPosition(0.0, 0.1, "rhm"));
-//    add(new GpsPosition(0.0, 0.2, "rhm"));
-//    add(new GpsPosition(41.527506, 2.363573, "rhm"));
-//    add(new GpsPosition(0.0, 0.0, "user"));
-//    add(new GpsPosition(0.0, 0.11, "user"));
-//    add(new GpsPosition(0.0, 0.19, "user"));
-//    add(new GpsPosition(41.527129, 2.363100, "user"));
-//  }};
 
   @Autowired
   GeoCoordinateService geoCoordinateService;
 
+  @Autowired
+  GpsPositionService gpsPositionService;
+
   @PostConstruct
   public void init() {
-    gpsPositionRepository.save(new GpsPosition(0.0, 0.0, "rhm"));
-    gpsPositionRepository.save(new GpsPosition(0.0, 0.1, "rhm"));
-    gpsPositionRepository.save(new GpsPosition(0.0, 0.2, "rhm"));
-    gpsPositionRepository.save(new GpsPosition(41.527506, 2.363573, "rhm"));
-    gpsPositionRepository.save(new GpsPosition(0.0, 0.0, "user"));
-    gpsPositionRepository.save(new GpsPosition(0.0, 0.11, "user"));
-    gpsPositionRepository.save(new GpsPosition(0.0, 0.19, "user"));
-    gpsPositionRepository.save(new GpsPosition(41.527129, 2.363100, "user"));
+    gpsPositionService.save(new GpsPosition(0.0, 0.0, "rhm"));
+    gpsPositionService.save(new GpsPosition(0.0, 0.1, "rhm"));
+    gpsPositionService.save(new GpsPosition(0.0, 0.2, "rhm"));
+    gpsPositionService.save(new GpsPosition(41.527506, 2.363573, "rhm"));
+    gpsPositionService.save(new GpsPosition(0.0, 0.0, "user"));
+    gpsPositionService.save(new GpsPosition(0.0, 0.11, "user"));
+    gpsPositionService.save(new GpsPosition(0.0, 0.19, "user"));
+    gpsPositionService.save(new GpsPosition(41.527129, 2.363100, "user"));
   }
 
   @RequestMapping(value = "/", method = RequestMethod.GET)
   @ResponseStatus(HttpStatus.OK)
   public List<GpsPosition> getPositions() {
-    return gpsPositionRepository.findAll();
+    return gpsPositionService.findAll();
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -75,7 +65,7 @@ public class Positions {
         request.getUser()
     );
 
-    gpsPositionRepository.save(gpsPosition);
+    gpsPositionService.save(gpsPosition);
     return gpsPosition;
   }
 
@@ -88,7 +78,7 @@ public class Positions {
           gpsPositionRequest.getLongitude(),
           gpsPositionRequest.getUser()
       );
-      gpsPositionRepository.save(gpsPosition);
+      gpsPositionService.save(gpsPosition);
     });
   }
 
@@ -97,6 +87,6 @@ public class Positions {
   private GpsPosition getGpsPosition(long id) {
 //    return positions.stream().filter(p -> p.getId() == id).findFirst().get();
 
-    return gpsPositionRepository.findOne(id);
+    return gpsPositionService.findOne(id);
   }
 }

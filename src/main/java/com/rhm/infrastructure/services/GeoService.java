@@ -1,7 +1,9 @@
 package com.rhm.infrastructure.services;
 
 import com.rhm.core.entities.GeoCoordinate;
+import com.rhm.core.repositories.GpsPositionRepository;
 import com.rhm.core.services.GeoCoordinateService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class GeoService implements GeoCoordinateService {
 
