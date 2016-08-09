@@ -9,7 +9,6 @@ import java.util.Date;
 
 @Entity
 public class GpsPosition {
-
   public double getLongitude() {
     return longitude;
   }
@@ -22,16 +21,24 @@ public class GpsPosition {
   public long getId() {
     return id;
   }
-  public Date getTimestamp() {
-    return timestamp;
+  public double getAltitude() {
+    return altitude;
   }
-
+  public double getSpeed() {
+    return speed;
+  }
+  public long getTime() {
+    return time;
+  }
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
   private double latitude;
   private double longitude;
+  private double altitude;
+  private double speed;
+  private long time;
   private String userId;
   private Date timestamp;
 
@@ -39,10 +46,19 @@ public class GpsPosition {
     //USed by spring.data
   }
 
-  public GpsPosition(double latitude, double longitude, String userId) {
+  public GpsPosition(
+      double latitude,
+      double longitude,
+      double altitude,
+      double speed,
+      long time,
+      String userId) {
     super();
     this.latitude = latitude;
     this.longitude = longitude;
+    this.altitude = altitude;
+    this.speed = speed;
+    this.time = time;
     this.userId = userId;
     this.timestamp = Date.from(Instant.now());
   }

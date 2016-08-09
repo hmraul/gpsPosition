@@ -28,14 +28,14 @@ public class Positions {
 
   @PostConstruct
   public void init() {
-    gpsPositionService.save(new GpsPosition(0.0, 0.0, "rhm"));
-    gpsPositionService.save(new GpsPosition(0.0, 0.1, "rhm"));
-    gpsPositionService.save(new GpsPosition(0.0, 0.2, "rhm"));
-    gpsPositionService.save(new GpsPosition(41.527506, 2.363573, "rhm"));
-    gpsPositionService.save(new GpsPosition(0.0, 0.0, "user"));
-    gpsPositionService.save(new GpsPosition(0.0, 0.11, "user"));
-    gpsPositionService.save(new GpsPosition(0.0, 0.19, "user"));
-    gpsPositionService.save(new GpsPosition(41.527129, 2.363100, "user"));
+    gpsPositionService.save(new GpsPosition(0.0, 0.0, 0.0, 0.0, 0, "rhm"));
+    gpsPositionService.save(new GpsPosition(0.0, 0.1, 0.0, 0.0, 0, "rhm"));
+    gpsPositionService.save(new GpsPosition(0.0, 0.2, 0.0, 0.0, 0, "rhm"));
+    gpsPositionService.save(new GpsPosition(41.527506, 2.363573, 0.0, 0.0, 0, "rhm"));
+    gpsPositionService.save(new GpsPosition(0.0, 0.0, 0.0, 0.0, 0, "user"));
+    gpsPositionService.save(new GpsPosition(0.0, 0.11, 0.0, 0.0, 0, "user"));
+    gpsPositionService.save(new GpsPosition(0.0, 0.19, 0.0, 0.0, 0, "user"));
+    gpsPositionService.save(new GpsPosition(41.527129, 2.363100, 0.0, 0.0, 0, "user"));
   }
 
   @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -62,6 +62,9 @@ public class Positions {
     GpsPosition gpsPosition = new GpsPosition(
         request.getLatitude(),
         request.getLongitude(),
+        request.getAltitude(),
+        request.getSpeed(),
+        request.getTime(),
         request.getUser()
     );
 
@@ -76,6 +79,9 @@ public class Positions {
       GpsPosition gpsPosition = new GpsPosition(
           gpsPositionRequest.getLatitude(),
           gpsPositionRequest.getLongitude(),
+          gpsPositionRequest.getAltitude(),
+          gpsPositionRequest.getSpeed(),
+          gpsPositionRequest.getTime(),
           gpsPositionRequest.getUser()
       );
       gpsPositionService.save(gpsPosition);
