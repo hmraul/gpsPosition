@@ -29,16 +29,12 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-devtools')
 	compile('org.springframework.boot:spring-boot-starter-mustache')
-//	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-data-mongodb')
 	runtime('com.h2database:h2')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 
-	// https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa
-//	compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '1.10.2.RELEASE'
-
-	// https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
 	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
 
 }
