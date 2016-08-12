@@ -1,5 +1,11 @@
 package com.rhm.core.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class GeoCoordinate {
   public double getLatitude() {
     return latitude;
@@ -9,6 +15,8 @@ public class GeoCoordinate {
     return longitude;
   }
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
   private double latitude;
   private double longitude;

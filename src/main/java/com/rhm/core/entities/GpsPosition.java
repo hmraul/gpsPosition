@@ -1,23 +1,20 @@
 package com.rhm.core.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.Instant;
 import java.util.Date;
 
 @Entity
 public class GpsPosition {
-  public double getLongitude() {
-    return longitude;
-  }
-  public double getLatitude() {
-    return latitude;
-  }
-  public String getUserId() {
-    return userId;
-  }
+//  public double getLongitude() {
+//    return longitude;
+//  }
+//  public double getLatitude() {
+//    return latitude;
+//  }
+//  public String getUserId() {
+//    return userId;
+//  }
   public long getId() {
     return id;
   }
@@ -30,12 +27,18 @@ public class GpsPosition {
   public long getTime() {
     return time;
   }
+  public GeoCoordinate getGeoCoordinate() {
+    return geoCoordinate;
+  }
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
-  private double latitude;
-  private double longitude;
+
+  @OneToOne(cascade = CascadeType.ALL)
+  private GeoCoordinate geoCoordinate;
+//  private double latitude;
+//  private double longitude;
   private double altitude;
   private double speed;
   private long time;
@@ -47,15 +50,17 @@ public class GpsPosition {
   }
 
   public GpsPosition(
-      double latitude,
-      double longitude,
+      GeoCoordinate geoCoordinate,
+//      double latitude,
+//      double longitude,
       double altitude,
       double speed,
       long time,
       String userId) {
     super();
-    this.latitude = latitude;
-    this.longitude = longitude;
+    this.geoCoordinate = geoCoordinate;
+//    this.latitude = latitude;
+//    this.longitude = longitude;
     this.altitude = altitude;
     this.speed = speed;
     this.time = time;
